@@ -1,0 +1,6 @@
+#!/bin/bash
+if amixer -c 0 sget Speaker | grep -q "\[on\]" ; then
+	amixer -c 0 sset Headphone on $(amixer -c 0 sget Speaker | tr "[]" "\n\n" | grep % | head -n 1) 2>&1 1>/dev/null
+else
+	amixer -c 0 sset Speaker $(amixer -c 0 sget Headphone | tr "[]" "\n\n" | grep % | head -n 1) 2>&1 1>/dev/null
+fi

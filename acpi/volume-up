@@ -1,0 +1,3 @@
+event=button/volumeup
+action=/usr/local/bin/soundsync
+

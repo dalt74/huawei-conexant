@@ -1,21 +1,23 @@
-Huawei notebook Conexant AC97 coded support scripts
-
-Conexant codec on Huawei/Honor notebooks is "slightly broken":
+Audio codec on Huawei/Honor notebooks is "slightly broken":
 
 1. The "master" gain controls highfreq speakers
 2. The "headphone" gain controls headphone and lowfreq speakers
 
-To check this use the command: alsamixer -c 0
+To check this use the command: alsamixer -c 0 then start any
+music/video and play with headphone and master gains alsamixer
+shows.
 
-So if you need speakeers sound you need to unmute master and hedphone gains both.
+So if you need speakers sound on you Huawei/Honor noutbook then
+you need to unmute and change master and hedphone gains both. The
+only problem is there are no Linux DE that allows you to setup this.
 
-The scripts fix the issue - it sync master/headphone gains while adjusting volume.
+The scripts fix thisissue by synchronizing master/headphone gains.
 
 How to Install:
 
 1. Install acpid (!!!)
 
-2. Copy files
+2. Copy files:
    acpi/* -> /etc/acpi/events
    bin/* -> /usr/local/bin
 
@@ -25,6 +27,11 @@ How to Install:
 
 P.S.:
 
-The sync script is called only when changing volume.
+The sync script is called only when changing volume. But I'm shure you're
+smart enough to setup <your_favorite_DE/distro> to call a sync script on boot
 
-But I'm shure you're smart enough to setup <your_favorite_DE> to call a sync script on boot
+P.P.S.:
+
+Don't forget to check SELinux logs if SELinux is enabled.
+
+It may (and will) reject access acpid scripts from accessing device
